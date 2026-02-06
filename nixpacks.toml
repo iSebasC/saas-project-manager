@@ -4,5 +4,9 @@ nixPkgs = ['php82', 'php82Extensions.pdo_mysql']
 [phases.install]
 cmds = ['composer install --no-dev --optimize-autoloader']
 
+[phases.deploy]
+# Deshabilitar migraciones - base de datos preexistente
+cmds = ['echo "Migrations disabled - using existing database"']
+
 [start]
 cmd = 'php artisan serve --host=0.0.0.0 --port=$PORT'
