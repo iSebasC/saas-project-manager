@@ -4,9 +4,15 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\MeController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HealthController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
+
+// Health check routes (no auth required)
+Route::get('/health', [HealthController::class, 'health'])->name('health');
+Route::get('/test-db', [HealthController::class, 'testDatabase'])->name('test.db');
+Route::get('/info', [HealthController::class, 'info'])->name('info');
 
 // Public routes
 Route::post('/auth/register', RegisterController::class)->name('auth.register');
